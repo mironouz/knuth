@@ -1,8 +1,12 @@
+package chapter1;
+
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class GcdTest {
 
-    @org.junit.jupiter.api.Test
+    @Test
     void calculate() {
         assertEquals(1, new Gcd(7, 5).calculate());
         assertEquals(6, new Gcd(18, 6).calculate());

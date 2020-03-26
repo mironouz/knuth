@@ -1,3 +1,5 @@
+package chapter1;
+
 public class Gcd {
     private long m, n;
 
