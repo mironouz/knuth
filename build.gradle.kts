@@ -1,5 +1,6 @@
 plugins {
     `java-library`
+    jacoco
     id("me.champeau.gradle.jmh") version "0.5.0"
 }
 
@@ -15,5 +16,10 @@ dependencies {
 tasks {
     test {
         useJUnitPlatform()
+    }
+    jacocoTestReport {
+        reports {
+            xml.isEnabled = true
+        }
     }
 }
