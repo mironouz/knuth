@@ -1,7 +1,8 @@
 package chapter1;
 
 public class Gcd {
-    private long m, n;
+    private long m;
+    private long n;
 
     public Gcd(long m, long n) {
         this.m = m;
