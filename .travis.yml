@@ -1,14 +1,16 @@
 language: java
 
 script:
-  - ./gradlew test jacocoTestReport
+  - ./gradlew check jacocoTestReport
 
 before_install:
   - sudo apt-get install jq
   - curl -LSs "$(curl -LSs https://api.github.com/repos/codacy/codacy-coverage-reporter/releases/latest | jq -r '.assets | map({name, browser_download_url} | select(.name | endswith(".jar"))) | .[0].browser_download_url')" -o codacy-coverage-reporter-assembly.jar
 
 after_success:
-  - java -jar codacy-coverage-reporter-assembly.jar report -l Java -r build/reports/jacoco/test/jacocoTestReport.xml
+  - java -jar codacy-coverage-reporter-assembly.jar report -l Java -r build/reports/jacoco/test/jacocoTestReport.xml --partial
+  - java -jar codacy-coverage-reporter-assembly.jar report -l Python -r coverage.xml --partial
+  - java -jar codacy-coverage-reporter-assembly.jar final
 
 addons:
   apt:
