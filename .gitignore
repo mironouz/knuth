@@ -7,3 +7,14 @@ out
 
 # Ignore Gradle build output directory
 build
+
+#python-gradle plugin
+.coverage
+coverage.xml
+activate
+htmlcov
+requirements.txt
+setup.cfg
+
+#python
+*.pyc
