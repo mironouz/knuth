@@ -9,3 +9,10 @@ before_install:
 
 after_success:
   - java -jar codacy-coverage-reporter-assembly.jar report -l Java -r build/reports/jacoco/test/jacocoTestReport.xml
+
+addons:
+  apt:
+    sources:
+      - deadsnakes
+    packages:
+      - python3.8
