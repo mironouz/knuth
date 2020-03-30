@@ -15,7 +15,7 @@ job('perfomance') {
     publishers {
         archiveArtifacts('build/reports/jmh/results.txt')
         richTextPublisher {
-            stableText('${FILE:jmh_snippet}')
+            stableText("${FILE:jmh_snippet}")
             parserName('HTML')
             unstableText('')
             failedText('')
