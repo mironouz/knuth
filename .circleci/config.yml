@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/openjdk:8-jdk
+      - image: mironouz/jdk-python:11-3.8
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -23,17 +23,6 @@ jobs:
 
     steps:
       - checkout
-      - run:
-          name: install python 3.8
-          command: |
-            sudo apt-get update
-            sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev curl
-            curl -O https://www.python.org/ftp/python/3.8.2/Python-3.8.2.tar.xz
-            tar -xf Python-3.8.2.tar.xz
-            cd Python-3.8.2
-            ./configure --enable-optimizations
-            make -j 4
-            sudo make altinstall
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -41,7 +30,7 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: gradle dependencies
+      - run: ./gradlew dependencies
 
       - save_cache:
           paths:
@@ -49,4 +38,4 @@ jobs:
           key: v1-dependencies-{{ checksum "build.gradle" }}
 
       # run tests!
-      - run: gradle test pytest
+      - run: ./gradlew test pytest
