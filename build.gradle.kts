@@ -35,6 +35,10 @@ configure<com.linkedin.gradle.python.PythonExtension> {
     pythonEnvironment.put("PYTHONPATH", srcDir)
 }
 
+configure<me.champeau.gradle.JMHPluginExtension> {
+    resultFormat = "CSV"
+}
+
 tasks {
     test {
         useJUnitPlatform()

@@ -8,7 +8,7 @@ cell = '<td>{}</td>'
 with open(sys.argv[1], 'r') as f:
     for line in f:
         html += '<tr>'
-        for item in line.split():
+        for item in line.split(','):
             html += cell.format(item)
         html += '</tr>'
     html += '</table>'
