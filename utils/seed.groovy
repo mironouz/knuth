@@ -10,12 +10,12 @@ job('perfomance') {
     steps {
         gradle('jmh')
         shell('chmod +x utils/jmh-report-to-html.py')
-        shell('utils/jmh-report-to-html.py build/reports/jmh/results.txt jmh_snippet')
+        shell('utils/jmh-report-to-html.py build/reports/jmh/results.csv jmh_snippet')
     }
     publishers {
-        archiveArtifacts('build/reports/jmh/results.txt')
+        archiveArtifacts('build/reports/jmh/results.csv')
         richTextPublisher {
-            stableText("${FILE:jmh_snippet}")
+            stableText('${FILE:jmh_snippet}')
             parserName('HTML')
             unstableText('')
             failedText('')
