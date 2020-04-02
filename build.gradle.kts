@@ -47,20 +47,9 @@ tasks {
             xml.isEnabled = true
         }
     }
-    pytest {
-        doFirst {
-            pyGradleConfig.details.setPythonVersion("3.8")
-        }
-    }
-    coverage {
+    clean {
         doFirst {
             pyGradleConfig.details.setPythonVersion("3.8")
         }
     }
 }
-
-val TaskContainer.pytest: TaskProvider<com.linkedin.gradle.python.tasks.PyTestTask>
-    get() = named<com.linkedin.gradle.python.tasks.PyTestTask>("pytest")
-
-val TaskContainer.coverage: TaskProvider<com.linkedin.gradle.python.tasks.PyCoverageTask>
-    get() = named<com.linkedin.gradle.python.tasks.PyCoverageTask>("coverage")
