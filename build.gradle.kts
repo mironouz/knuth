@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 buildscript {
     dependencies {
         classpath("com.linkedin.pygradle:pygradle-plugin:0.12.10")
@@ -10,6 +12,7 @@ plugins {
     `java-library`
     jacoco
     id("me.champeau.gradle.jmh") version "0.5.0"
+    kotlin("jvm") version "1.3.72"
 }
 
 repositories {
@@ -25,6 +28,7 @@ repositories {
 dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.1")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.1")
+    implementation(kotlin("stdlib-jdk8"))
 }
 
 val pyGradleConfig = the<com.linkedin.gradle.python.PythonExtension>()
@@ -52,4 +56,12 @@ tasks {
             pyGradleConfig.details.setPythonVersion("3.8")
         }
     }
+}
+val compileKotlin: KotlinCompile by tasks
+compileKotlin.kotlinOptions {
+    jvmTarget = "1.8"
+}
+val compileTestKotlin: KotlinCompile by tasks
+compileTestKotlin.kotlinOptions {
+    jvmTarget = "1.8"
 }
