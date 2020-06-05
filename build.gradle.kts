@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 buildscript {
     dependencies {
         classpath("com.linkedin.pygradle:pygradle-plugin:0.12.10")
@@ -31,16 +29,16 @@ dependencies {
     implementation(kotlin("stdlib-jdk8"))
 }
 
+configure<me.champeau.gradle.JMHPluginExtension> {
+    resultFormat = "CSV"
+}
+
 val pyGradleConfig = the<com.linkedin.gradle.python.PythonExtension>()
 pyGradleConfig.testDir = project.projectDir.absolutePath + "/src/test/python"
 pyGradleConfig.srcDir = project.projectDir.absolutePath + "/src/main/python"
 pyGradleConfig.pinnedFile = project.file("requirements.txt")
 pyGradleConfig.forceVersion("pypi", "flake8", "3.2.1")
 pyGradleConfig.pythonEnvironment.put("PYTHONPATH", project.projectDir.absolutePath + "/src/main/python")
-
-configure<me.champeau.gradle.JMHPluginExtension> {
-    resultFormat = "CSV"
-}
 
 tasks {
     test {
@@ -56,12 +54,4 @@ tasks {
             pyGradleConfig.details.setPythonVersion("3.8")
         }
     }
-}
-val compileKotlin: KotlinCompile by tasks
-compileKotlin.kotlinOptions {
-    jvmTarget = "1.8"
-}
-val compileTestKotlin: KotlinCompile by tasks
-compileTestKotlin.kotlinOptions {
-    jvmTarget = "1.8"
 }
