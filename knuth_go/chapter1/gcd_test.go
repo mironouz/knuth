@@ -2,7 +2,7 @@ package chapter1
 
 import "testing"
 
-func Test_gcd(t *testing.T) {
+func TestGcd(t *testing.T) {
 	type args struct {
 		m int64
 		n int64
@@ -34,5 +34,18 @@ func Test_gcd(t *testing.T) {
 				t.Errorf("gcd() = %v, want %v", got, tt.want)
 			}
 		})
+	}
+}
+
+func BenchmarkGcdBestCase(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		gcd(1, 1)
+	}
+}
+
+
+func BenchmarkGcdWorstCase(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		gcd(7540113804746346429, 4660046610375530309)
 	}
 }
