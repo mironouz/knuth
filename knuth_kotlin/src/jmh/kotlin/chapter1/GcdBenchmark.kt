@@ -14,11 +14,11 @@ import org.openjdk.jmh.annotations.Warmup
 open class GcdBenchmarkKotlin {
     @Benchmark
     fun bestCase() {
-        Gcd(1, 1).calculate()
+        gcd(1,1)
     }
 
     @Benchmark
     fun worstCase() {
-        Gcd(7540113804746346429L, 4660046610375530309L).calculate()
+        gcd(7540113804746346429L, 4660046610375530309L)
     }
 }

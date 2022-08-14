@@ -9,7 +9,7 @@ apply(plugin="com.linkedin.python")
 plugins {
     `java-library`
     jacoco
-    id("me.champeau.gradle.jmh") version "0.5.0"
+    id("me.champeau.gradle.jmh") version "0.5.3"
     kotlin("jvm") version "1.3.72"
 }
 
