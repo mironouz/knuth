@@ -1,6 +1,7 @@
 package chapter1;
 
 
+import com.chapter1.Gcd;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Fork;

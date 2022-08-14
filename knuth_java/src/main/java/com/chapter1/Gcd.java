@@ -1,4 +1,4 @@
-package chapter1;
+package com.chapter1;
 
 public class Gcd {
     private long m;

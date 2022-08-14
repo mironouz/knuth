@@ -1,10 +1,10 @@
-package chapter1;
+package com.chapter1;
 
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class GcdTest {
+public class GcdTest {
 
     @Test
     void calculate() {

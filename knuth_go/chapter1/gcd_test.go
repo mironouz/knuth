@@ -40,7 +40,7 @@ func TestGcd(t *testing.T) {
 func BenchmarkGcdBestCase(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		gcd(1, 1)
-	}
+	}sudo
 }
 
 
